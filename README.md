@@ -1,7 +1,7 @@
 # CovidAppBr
 
-![Screenshot_1589668429](https://user-images.githubusercontent.com/13910842/82131715-846c1180-97ae-11ea-8480-13a92d9482f2.png)
-![Screenshot_1589668405](https://user-images.githubusercontent.com/13910842/82131717-86ce6b80-97ae-11ea-98b4-644ce95346cb.png)
+![covid1](https://user-images.githubusercontent.com/13910842/82131882-5a1b5380-97b0-11ea-9672-ea946faa3f0b.PNG)
+![covid2](https://user-images.githubusercontent.com/13910842/82131883-5ab3ea00-97b0-11ea-9f82-b871bae40bc4.PNG)
 
 ### Details
 
