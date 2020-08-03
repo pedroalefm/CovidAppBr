@@ -9,17 +9,17 @@ import {
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-const Card = ({uf}) => {
+const Card = ({deaths, cases, suspects, state, uf}) => {
   return (
     <View style={styles.card}>
       <View style={styles.titleContainer}>
         <Image
           style={styles.img}
           source={{
-            uri: `https://devarthurribeiro.github.io/covid19-brazil-api/static/flags/${uf.uf}.png`,
+            uri: `https://devarthurribeiro.github.io/covid19-brazil-api/static/flags/${uf}.png`,
           }}
         />
-        <Text style={styles.title}>{uf.state}</Text>
+        <Text style={styles.title}>{state}</Text>
       </View>
 
       <View style={styles.containerData}>
@@ -27,7 +27,7 @@ const Card = ({uf}) => {
           <Text style={styles.textTitleData}>Casos</Text>
           <View style={styles.textDataContainer}>
             <Icon name="medkit" color="#BB86FC" size={16} />
-            <Text style={styles.textData}>{uf.cases}</Text>
+            <Text style={styles.textData}>{cases}</Text>
           </View>
         </View>
 
@@ -36,7 +36,7 @@ const Card = ({uf}) => {
 
           <View style={styles.textDataContainer}>
             <Icon name="cross" color="#BB86FC" size={16} />
-            <Text style={styles.textData}>{uf.deaths}</Text>
+            <Text style={styles.textData}>{deaths}</Text>
           </View>
         </View>
 
@@ -45,7 +45,7 @@ const Card = ({uf}) => {
 
           <View style={styles.textDataContainer}>
             <Icon name="mask" color="#BB86FC" size={16} />
-            <Text style={styles.textData}>{uf.suspects}</Text>
+            <Text style={styles.textData}>{suspects}</Text>
           </View>
         </View>
       </View>

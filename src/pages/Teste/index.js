@@ -35,6 +35,7 @@ const Teste = () => {
   const [finish, setFinish] = useState(false);
   const [currentSintomas, setCurrentSintomas] = useState([]);
   const [result, setResult] = useState('');
+
   const yes = () => {
     let sintomas = [...currentSintomas];
     sintomas.push(currentQuestion.sintoma);
@@ -99,8 +100,8 @@ const Teste = () => {
     <ScrollView style={styles.container}>
       <Text style={styles.warningText}>
         O seguinte teste é um guia para identificar sintomas, ele não tira de
-        jeito nenhum o mérito de se procurar um profissional preparado para um
-        diagnóstico correto.
+        maneira alguma o mérito de se procurar um profissional capacitado para
+        um diagnóstico correto.
       </Text>
       {!finish ? (
         <View style={styles.questionContainer}>

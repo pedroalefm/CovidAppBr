@@ -10,31 +10,26 @@ import {useNavigation} from '@react-navigation/native';
 import Card from '../../components/Card';
 import MiniCard from '../../components/MiniCard';
 import {SearchBar} from 'react-native-elements';
+import {fetchData} from './fetchData';
 import axios from 'axios';
 import _ from 'lodash';
-import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 const Home = () => {
   const navigation = useNavigation();
+
   const [search, setSearch] = useState('');
   const [searchResult, setSearchResult] = useState([]);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
 
-  useEffect(() => {
+  useEffect(async () => {
     setLoading(true);
-    fetchData();
+    let data = [];
+    data = await fetchData();
+    setData(data);
     setLoading(false);
   }, []);
 
-  const fetchData = async () => {
-    const urlData = 'https://covid19-brazil-api.now.sh/api/report/v1';
-    const data = await axios.get(urlData).then((res) => {
-      return res.data.data;
-    });
-    console.log(data);
-    setData(data);
-  };
   useEffect(() => {
     const query = search.toLowerCase();
     const result = _.filter(data, (uf) => {
@@ -58,11 +53,36 @@ const Home = () => {
       ) : (
         <View>
           <View style={styles.topCard}>
-            <Card uf={searchResult.length > 0 ? searchResult[0] : data[1]} />
+            {searchResult.length > 0 ? (
+              <Card
+                deaths={searchResult[0].deaths}
+                cases={searchResult[0].cases}
+                suspects={searchResult[0].suspects}
+                state={searchResult[0].state}
+                uf={searchResult[0].uf}
+              />
+            ) : (
+              <Card
+                deaths={data[1].deaths}
+                cases={data[1].cases}
+                suspects={data[1].suspects}
+                state={data[1].state}
+                uf={data[1].uf}
+              />
+            )}
           </View>
           <ScrollView horizontal style={styles.miniCard}>
             {data.map((state) => {
-              return <MiniCard uf={state} key={state.udi} />;
+              return (
+                <MiniCard
+                  deaths={state.deaths}
+                  cases={state.cases}
+                  suspects={state.suspects}
+                  state={state.state}
+                  uf={state.uf}
+                  key={state.udi}
+                />
+              );
             })}
           </ScrollView>
         </View>
@@ -81,7 +101,7 @@ const styles = StyleSheet.create({
     marginTop: 40,
   },
   miniCard: {
-    marginTop: 40,
+    marginTop: 60,
   },
 });
 
